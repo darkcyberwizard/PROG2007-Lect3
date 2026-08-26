@@ -15,7 +15,7 @@ Each folder contains a complete `MainActivity.kt` for one slide. To try one out,
 | 14 | Basic UI Elements: Text, Button, TextField | [slide-14-basic-ui-elements](./slide-14-basic-ui-elements) |
 | 15 | State in Compose: remember and mutableStateOf | [slide-15-state-remember](./slide-15-state-remember) |
 | 16 | remember in Action: Without vs. With | [slide-16-remember-in-action](./slide-16-remember-in-action) |
-| 16 | Putting It Together: The Hobby App | [slide-07-hobby-app](./slide-07-hobby-app/MainActivity.kt) |
+| 17 | Putting It Together: The Hobby App | [slide-17-hobby-app](./slide-17-hobby-app) |
 | 17 | Modifiers: Customizing Composables | [slide-08-modifiers](./slide-08-modifiers/MainActivity.kt) |
 | 20 | Material Design 3 | [slide-11-material-design-3](./slide-11-material-design-3/MainActivity.kt) |
 | 21 | Compose vs. Material 3: What's the Difference? | [slide-12-compose-vs-material3](./slide-12-compose-vs-material3/MainActivity.kt) |
