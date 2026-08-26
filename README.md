@@ -11,7 +11,7 @@ Each folder contains a complete `MainActivity.kt` for one slide. To try one out,
 | Slide | Topic | Code |
 |---|---|---|
 | 11 | Composable Functions: The Building Block | [slide-11-composable-functions](./slide-11-composable-functions) |
-| 12 | Layouts: Row, Column, and Box | [slide-04-layouts](./slide-04-layouts/MainActivity.kt) |
+| 13 | Layouts: Row, Column, and Box | [slide-13-layouts](./slide-13-layouts) |
 | 13 | Basic UI Elements: Text, Button, TextField | [slide-05-basic-ui-elements](./slide-05-basic-ui-elements/MainActivity.kt) |
 | 14 | State in Compose: remember and mutableStateOf | [slide-06a-state-remember](./slide-06a-state-remember/MainActivity.kt) |
 | 15 | remember in Action: Without vs. With | [slide-06b-remember-in-action](./slide-06b-remember-in-action/MainActivity.kt) |
