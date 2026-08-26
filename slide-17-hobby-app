@@ -1,0 +1,97 @@
+package com.example.uiuxtestapp
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.uiuxtestapp.ui.theme.UIUXTestAppTheme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            UIUXTestAppTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Box(modifier = Modifier.padding(innerPadding)) {
+                        HobbyScreen()
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun HobbyScreen() {
+    var hobbyName by remember { mutableStateOf("") }
+    val hobbies = remember { mutableStateListOf<String>() }
+
+    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+        Text(
+            text = "My Hobbies",
+            modifier = Modifier.fillMaxWidth(),
+            textAlign = TextAlign.Center
+        )
+
+        Spacer(modifier = Modifier.padding(top = 16.dp))
+
+        Row {
+            OutlinedTextField(
+                value = hobbyName,
+                onValueChange = { hobbyName = it },
+                placeholder = { Text("Add hobby...") },
+                modifier = Modifier.weight(1f)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Button(onClick = {
+                if (hobbyName.isNotBlank()) {
+                    hobbies.add(hobbyName)
+                    hobbyName = ""
+                }
+            }) {
+                Text("Add")
+            }
+        }
+
+        Spacer(modifier = Modifier.padding(top = 16.dp))
+
+        Column {
+            for (hobby in hobbies) {
+                Text(text = hobby)
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    UIUXTestAppTheme {
+        HobbyScreen()
+    }
+}
