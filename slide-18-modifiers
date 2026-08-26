@@ -1,0 +1,158 @@
+package com.example.uiuxtestapp
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            ModifierExamples()
+        }
+    }
+}
+
+@Composable
+fun ModifierExamples() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .safeDrawingPadding() // keeps content clear of the status bar — no Scaffold needed
+            .padding(16.dp)
+            .verticalScroll(rememberScrollState())
+    ) {
+
+        // fontSize and fontWeight live on TextStyle, not on Modifier
+        BasicText(
+            text = "Continue",
+            style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold),
+            modifier = Modifier
+                .padding(bottom = 16.dp)
+                .background(Color(0xFFE0F7F5))
+                .padding(8.dp)
+        )
+
+        // color is also part of TextStyle, not a modifier
+        BasicText(
+            text = "Colored text",
+            style = TextStyle(color = Color(0xFF00A19A), fontWeight = FontWeight.Bold),
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+
+        // clip + background + border together make a rounded, outlined card
+        BasicText(
+            text = "Bordered card",
+            modifier = Modifier
+                .padding(bottom = 16.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .background(Color(0xFFF0F0F0))
+                .border(width = 2.dp, color = Color(0xFF00A19A), shape = RoundedCornerShape(12.dp))
+                .padding(12.dp)
+        )
+
+        // shadow + a shaped background gives a floating card effect
+        BasicText(
+            text = "Shadow card",
+            modifier = Modifier
+                .padding(bottom = 16.dp)
+                .shadow(elevation = 8.dp, shape = RoundedCornerShape(12.dp))
+                .background(Color.White, RoundedCornerShape(12.dp))
+                .padding(12.dp)
+        )
+
+        // alpha controls transparency, from 0f (invisible) to 1f (fully opaque)
+        BasicText(
+            text = "Faded text",
+            modifier = Modifier
+                .alpha(0.5f)
+                .padding(bottom = 16.dp)
+        )
+
+        // offset nudges a composable without affecting the space it takes up
+        BasicText(
+            text = "Nudged text",
+            modifier = Modifier
+                .offset(x = 24.dp)
+                .padding(bottom = 16.dp)
+        )
+
+        // rotate spins a composable around its center, in degrees
+        BasicText(
+            text = "Tilted text",
+            modifier = Modifier
+                .rotate(8f)
+                .padding(bottom = 16.dp)
+        )
+
+        // size fixes both width and height together, instead of setting them one at a time
+        Box(
+            modifier = Modifier
+                .size(width = 120.dp, height = 60.dp)
+                .background(Color(0xFFE0F7F5))
+                .padding(bottom = 16.dp)
+        )
+
+        // align() positions this BasicText within the Column, instead of the default left edge
+        BasicText(
+            text = "Centered label",
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(bottom = 16.dp)
+        )
+
+        // a "button" made from a Box + clickable + background — no Material component at all
+        Box(
+            modifier = Modifier
+                .padding(top = 16.dp)
+                .fillMaxWidth()
+                .height(56.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color(0xFF00A19A))
+                .clickable { }, // clickable is just a modifier — tap-handling isn't a Material 3 concept
+            contentAlignment = Alignment.Center
+        ) {
+            BasicText(
+                text = "Continue",
+                style = TextStyle(color = Color.White, fontWeight = FontWeight.Bold)
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    ModifierExamples()
+}
