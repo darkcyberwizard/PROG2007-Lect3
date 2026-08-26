@@ -1,0 +1,75 @@
+package com.example.uiuxtestapp
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.uiuxtestapp.ui.theme.UIUXTestAppTheme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            UIUXTestAppTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Box(modifier = Modifier.padding(innerPadding).padding(16.dp)) {
+                        // Step 1: run it as-is and tap Increment a few times — count stays at 0.
+                        BrokenCounter()
+
+                        // Step 2: comment the line above, uncomment the line below, re-run,
+                        // and tap Increment again — this time the count actually goes up.
+                        // WorkingCounter()
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun BrokenCounter() {
+    var count by mutableStateOf(0) // no remember — resets every recomposition
+
+    Column {
+        Text(text = "Count: $count")
+        Button(onClick = { count++ }) {
+            Text("Increment")
+        }
+    }
+}
+
+@Composable
+fun WorkingCounter() {
+    var count by remember { mutableStateOf(0) } // remember — survives recomposition
+
+    Column {
+        Text(text = "Count: $count")
+        Button(onClick = { count++ }) {
+            Text("Increment")
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    UIUXTestAppTheme {
+        BrokenCounter()
+    }
+}
