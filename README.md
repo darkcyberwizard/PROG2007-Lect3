@@ -18,6 +18,6 @@ Each folder contains a complete `MainActivity.kt` for one slide. To try one out,
 | 17 | Putting It Together: The Hobby App | [slide-17-hobby-app](./slide-17-hobby-app) |
 | 18 | Modifiers: Customizing Composables | [slide-18-modifiers](./slide-18-modifiers) |
 | 23 | Material Design 3 | [slide-23-material-design-3](./slide-23-material-design-3) |
-| 21 | Compose vs. Material 3: What's the Difference? | [slide-12-compose-vs-material3](./slide-12-compose-vs-material3/MainActivity.kt) |
+| 24 | Compose vs. Material 3: What's the Difference? | [slide-24-compose-vs-material3](./slide-24-compose-vs-material3) |
 | 22 | Material 3 in Code: Theming Your App | [slide-13-theming-your-app](./slide-13-theming-your-app/MainActivity.kt) |
 
