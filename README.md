@@ -4,7 +4,7 @@ Runnable Jetpack Compose examples for each slide in Lecture 3 ("Introduction to 
 
 ## How to use
 
-Each folder contains a complete `MainActivity.kt` for one slide. To try one out, paste the whole file over your own `MainActivity.kt` in a Compose project (Minimum SDK 26+), then Run it or open the `@Preview`.
+Each folder contains a complete `MainActivity.kt` for one slide. To try one out, paste the whole file over your own `MainActivity.kt` in a Compose project (Minimum SDK 26+), then Run it.
 
 ## Slides
 
